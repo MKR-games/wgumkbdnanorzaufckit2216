@@ -507,3 +507,19 @@ button { font: inherit; }
     animation: none !important;
   }
 }
+
+/* CHARACTER PAGE SCROLLBAR */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #133D7A rgba(19, 61, 122, 0.10);
+}
+html::-webkit-scrollbar { width: 10px; }
+html::-webkit-scrollbar-track {
+  background: rgba(19, 61, 122, 0.08);
+}
+html::-webkit-scrollbar-thumb {
+  background: #133D7A;
+  border: 2px solid #F3F2EC;
+  border-radius: 999px;
+}
+html::-webkit-scrollbar-thumb:hover { background: #0e2e5d; }

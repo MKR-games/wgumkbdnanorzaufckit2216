@@ -9,6 +9,7 @@
   <title>검은 복도 | 문해준 캐릭터 설정서</title>
   <meta name="description" content="머더미스터리 《검은 복도》 문해준 캐릭터 설정서 모바일 뷰어" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="manual-viewer.css" />
 </head>
 <body>
   <div class="scroll-progress" aria-hidden="true">
@@ -17,6 +18,7 @@
 
   <header class="site-header">
     <div class="site-header__inner">
+      <button class="game-manual-button" id="gameManualOpen" type="button" aria-haspopup="dialog" aria-controls="gameManualViewer">게임 설명서</button>
       <div class="brand">
         <span class="brand__eyebrow">MURDER MYSTERY</span>
         <h1 class="brand__title">검은 복도</h1>
@@ -276,5 +278,29 @@
   </footer>
 
   <script src="script.js"></script>
+
+  <section class="game-manual-viewer" id="gameManualViewer" role="dialog" aria-modal="true" aria-label="게임 설명서" aria-hidden="true" hidden>
+    <div class="game-manual-viewer__header">
+      <div class="game-manual-viewer__title">
+        <span>GAME MANUAL</span>
+        <strong>검은 복도 · 게임 설명서</strong>
+      </div>
+      <div class="game-manual-viewer__actions">
+        <button class="game-manual-viewer__close" id="gameManualClose" type="button" aria-label="캐릭터 설정서로 돌아가기">캐릭터 설정서</button>
+      </div>
+    </div>
+    <div class="game-manual-viewer__frame-wrap">
+      <div class="game-manual-viewer__loading" id="gameManualLoading">게임 설명서를 불러오는 중입니다.</div>
+      <iframe
+        id="gameManualFrame"
+        title="검은 복도 게임 설명서"
+        data-src="https://mkr-games.github.io/fwoxwsinuueks0hswai05z9m/"
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+      ></iframe>
+    </div>
+  </section>
+
+  <script src="manual-viewer.js"></script>
 </body>
 </html>

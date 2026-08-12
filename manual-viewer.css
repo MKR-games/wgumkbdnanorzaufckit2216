@@ -1,0 +1,321 @@
+
+/* =========================================================
+   공통 게임 설명서 오버레이
+   ========================================================= */
+
+.site-header__inner,
+.top-inner {
+  grid-template-columns: auto minmax(0, 1fr) auto !important;
+  display: grid !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.site-header__inner > .brand,
+.top-inner > .brand {
+  min-width: 0;
+  grid-column: 2;
+}
+
+.site-header__inner > .header-actions,
+.top-inner > .tools {
+  grid-column: 3;
+  justify-self: end;
+}
+
+.game-manual-button {
+  grid-column: 1;
+  justify-self: start;
+  min-height: 42px;
+  padding: 8px 12px;
+  color: #F3F2EC;
+  background: #133D7A;
+  border: 2px solid #133D7A;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.74rem;
+  font-weight: 900;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.game-manual-button:active {
+  transform: translateY(1px);
+}
+
+.game-manual-button:focus-visible,
+.game-manual-viewer__close:focus-visible,
+.game-manual-viewer__external:focus-visible {
+  outline: 3px solid rgba(19, 61, 122, 0.28);
+  outline-offset: 3px;
+}
+
+body.game-manual-open {
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+  overflow: hidden !important;
+}
+
+.game-manual-viewer[hidden] {
+  display: none !important;
+}
+
+.game-manual-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 4000;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100dvh;
+  min-height: 100vh;
+  color: #0B0B0B;
+  background: #F3F2EC;
+}
+
+.game-manual-viewer__header {
+  flex: 0 0 auto;
+  min-height: 64px;
+  padding:
+    max(10px, env(safe-area-inset-top))
+    12px
+    10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: rgba(243, 242, 236, 0.98);
+  border-bottom: 2px solid #133D7A;
+  box-shadow: 0 4px 18px rgba(11, 11, 11, 0.08);
+}
+
+.game-manual-viewer__title {
+  min-width: 0;
+  line-height: 1.15;
+}
+
+.game-manual-viewer__title span {
+  display: block;
+  margin-bottom: 3px;
+  color: #133D7A;
+  font-size: 0.58rem;
+  font-weight: 900;
+  letter-spacing: 0.17em;
+}
+
+.game-manual-viewer__title strong {
+  display: block;
+  overflow: hidden;
+  font-size: 0.95rem;
+  font-weight: 900;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.game-manual-viewer__actions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 7px;
+}
+
+.game-manual-viewer__external,
+.game-manual-viewer__close {
+  display: inline-grid;
+  place-items: center;
+  min-height: 42px;
+  color: #133D7A;
+  background: #F3F2EC;
+  border: 2px solid #133D7A;
+  border-radius: 999px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.game-manual-viewer__external {
+  padding: 7px 11px;
+  font-size: 0.72rem;
+}
+
+.game-manual-viewer__close {
+  width: 44px;
+  padding: 0;
+  font: inherit;
+  font-size: 1.55rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.game-manual-viewer__frame-wrap {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  background: #F3F2EC;
+}
+
+.game-manual-viewer iframe {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #F3F2EC;
+}
+
+.game-manual-viewer__loading {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  color: #133D7A;
+  font-size: 0.86rem;
+  font-weight: 900;
+  text-align: center;
+}
+
+.game-manual-viewer__loading.is-hidden {
+  display: none;
+}
+
+@media (max-width: 560px) {
+  .site-header__inner,
+  .top-inner {
+    grid-template-columns: auto minmax(0, 1fr) !important;
+  }
+
+  .site-header__inner > .brand,
+  .top-inner > .brand {
+    display: none !important;
+  }
+
+  .site-header__inner > .header-actions,
+  .top-inner > .tools {
+    grid-column: 2;
+  }
+
+  .game-manual-button {
+    grid-column: 1;
+    padding-inline: 10px;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .game-manual-button {
+    padding-inline: 8px;
+    font-size: 0.66rem;
+  }
+
+  .game-manual-viewer__external {
+    display: none;
+  }
+
+  .game-manual-viewer__title strong {
+    font-size: 0.88rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game-manual-button {
+    transition: none !important;
+  }
+}
+
+
+/* =========================================================
+   공통 스크롤바 디자인
+   ========================================================= */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #133D7A rgba(19, 61, 122, 0.10);
+}
+
+body,
+.quick-nav,
+.game-manual-viewer__frame-wrap {
+  scrollbar-width: thin;
+  scrollbar-color: #133D7A rgba(19, 61, 122, 0.10);
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+.quick-nav::-webkit-scrollbar,
+.game-manual-viewer__frame-wrap::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track,
+.quick-nav::-webkit-scrollbar-track,
+.game-manual-viewer__frame-wrap::-webkit-scrollbar-track {
+  background: rgba(19, 61, 122, 0.08);
+  border-radius: 999px;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb,
+.quick-nav::-webkit-scrollbar-thumb,
+.game-manual-viewer__frame-wrap::-webkit-scrollbar-thumb {
+  background: #133D7A;
+  border: 2px solid #F3F2EC;
+  border-radius: 999px;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover,
+.quick-nav::-webkit-scrollbar-thumb:hover,
+.game-manual-viewer__frame-wrap::-webkit-scrollbar-thumb:hover {
+  background: #0e2e5d;
+}
+
+html::-webkit-scrollbar-corner,
+body::-webkit-scrollbar-corner {
+  background: #F3F2EC;
+}
+
+
+/* 새 창 버튼 제거 후 '캐릭터 설정서' 복귀 버튼 */
+.game-manual-viewer__actions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+}
+
+.game-manual-viewer__external {
+  display: none !important;
+}
+
+.game-manual-viewer__close {
+  width: auto !important;
+  min-width: 116px;
+  min-height: 42px;
+  padding: 8px 14px !important;
+  color: #F3F2EC !important;
+  background: #133D7A !important;
+  border: 2px solid #133D7A !important;
+  border-radius: 999px !important;
+  font-size: 0.76rem !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  white-space: nowrap;
+}
+
+.game-manual-viewer__close:active {
+  transform: translateY(1px);
+}
+
+@media (max-width: 360px) {
+  .game-manual-viewer__close {
+    min-width: 106px;
+    padding-inline: 11px !important;
+    font-size: 0.72rem !important;
+  }
+}
