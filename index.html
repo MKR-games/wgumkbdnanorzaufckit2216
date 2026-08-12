@@ -10,6 +10,7 @@
   <meta name="description" content="머더미스터리 《검은 복도》 문해준 캐릭터 설정서 모바일 뷰어" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="manual-viewer.css" />
+  <link rel="stylesheet" href="map-popup.css" />
 </head>
 <body>
   <div class="scroll-progress" aria-hidden="true">
@@ -24,6 +25,7 @@
         <h1 class="brand__title">검은 복도</h1>
       </div>
       <div class="header-actions" aria-label="읽기 설정">
+        <button class="icon-button map-open-button" id="mapOpen" type="button" aria-haspopup="dialog" aria-controls="mapPopup">MAP</button>
         <button class="icon-button" id="fontDown" type="button" aria-label="글자 크기 줄이기">가−</button>
         <button class="icon-button" id="fontUp" type="button" aria-label="글자 크기 키우기">가＋</button>
         <button class="icon-button" id="menuToggle" type="button" aria-expanded="false" aria-controls="quickNav">목차</button>
@@ -301,6 +303,32 @@
     </div>
   </section>
 
+  
+  <section class="map-popup" id="mapPopup" role="dialog" aria-modal="true"
+           aria-label="검은 복도 현장 MAP" aria-hidden="true" hidden>
+    <div class="map-popup__header">
+      <div class="map-popup__title">
+        <span>LOCATION MAP</span>
+        <strong>검은 복도 · 현장 MAP</strong>
+      </div>
+
+      <button class="map-popup__close" id="mapClose" type="button"
+              aria-label="캐릭터 설정서로 돌아가기">캐릭터 설정서</button>
+    </div>
+
+    <div class="map-popup__viewport" id="mapViewport">
+      <img class="map-popup__image" id="mapImage" src="map.png"
+           alt="외부 장비 구역, 외부 소품실, 외부 창고, 음향 부스, 배우 대기실, 제작 사무실, 감독실, 분장실과 검은 복도가 표시된 현장 지도">
+    </div>
+
+    <div class="map-popup__zoom" aria-label="지도 확대 축소">
+      <button id="mapZoomOut" type="button" aria-label="지도 축소">−</button>
+      <button id="mapZoomReset" type="button" aria-label="지도 배율 초기화">100%</button>
+      <button id="mapZoomIn" type="button" aria-label="지도 확대">＋</button>
+    </div>
+  </section>
+
+  <script src="map-popup.js"></script>
   <script src="manual-viewer.js"></script>
 </body>
 </html>
